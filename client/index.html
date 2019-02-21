@@ -6,11 +6,17 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
     <link rel="stylesheet" href="styles/main.css">
+    <!-- Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <title>Metrics Dashboard</title>
   </head>
   <body ng-app="dashboardApp">
     <h1>Hello Peeps!</h1>
+    <div id="chart-area" class="row mb-6">
+      <div id="time-chart" class="col-md-6"></div>
+      <div id="second-chart" class="col-md-6"></div>
+    </div>
 
 
 
@@ -23,5 +29,7 @@
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <!-- Source Scripts -->
     <script src="js/app.js"></script>
+    <script src="js/factories/chartInit.js"></script>
+    <!--  -->
   </body>
 </html>
