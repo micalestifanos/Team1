@@ -3,22 +3,26 @@ google.charts.setOnLoadCallback(drawFirstChart);
 google.charts.setOnLoadCallback(drawSecondChart);
 
 
-function drawFirstChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Year', 'Video', 'PDF'],
-        ['2013',  1000,      400],
-        ['2014',  1170,      460],
-        ['2015',  660,       1120],
-        ['2016',  1030,      540]
-    ]);
+function drawFirstChart(jsonData) {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Trend');
+    data.addColumn('number', 'Volume');
+    if(jsonData != undefined){
+        for(i = 1; i < 50; i++){
+            
+            data.addRows([
+            [jsonData[i].topic, jsonData[i].volume]
+            ]);
+            }
 
-    var options = {
-        title: 'Video vs PDF',
-        hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-        vAxis: {minValue: 0}
-    };
+        var options = {
+            title: 'Global Trends',
+            hAxis: {title: 'Top Trends',  titleTextStyle: {color: '#333'}},
+            vAxis: {minValue: 0}
+        };
+    }
 
-    var chart = new google.visualization.AreaChart(document.getElementById("time-chart"));
+    chart = new google.visualization.Histogram(document.getElementById("time-chart"));
     chart.draw(data, options);
 }
 function drawSecondChart() {
