@@ -57,7 +57,7 @@ function drawSecondChart(jsonData) {
 
   function drawTable(jsonData) {
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Tremd');
+    data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if(jsonData != undefined){
         for(i = 1; i < 50; i++){
