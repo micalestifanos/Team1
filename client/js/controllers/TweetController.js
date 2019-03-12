@@ -5,6 +5,8 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
       console.log(response.data);
       firstChartElements = response.data;
       drawFirstChart(firstChartElements);
+      drawSecondChart(firstChartElements);
+      drawTable(firstChartElements);
 
 
 
