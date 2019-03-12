@@ -13,8 +13,13 @@ exports.getGlobalTrends = function(req, res){
 
     TwitterController.get('trends/place.json', params, function(err, data, result){
         if(!err){
+          var tweets = [{topic: String, volume: Number}];
           console.log('Global Trending Request');
-          res.status(200).json(data);
+          for (let i = 0; i < 50; i++){
+            tweet = {topic: data[0].trends[i].name, volume: data[0].trends[i].tweet_volume};
+            tweets.push(tweet);
+          }
+          res.status(200).json(tweets);
         }
         else{
           console.log(err);

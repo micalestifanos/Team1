@@ -4,7 +4,7 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
     Twitter.getGlobalTrends().then(function(response) {
       console.log(response.data);
       firstChartElements = response.data;
-      
+      drawFirstChart(firstChartElements);
 
 
 
