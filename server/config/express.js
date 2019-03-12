@@ -3,7 +3,8 @@ var path = require('path'),
   mongoose = require('mongoose'),
   morgan = require('morgan'),
   bodyParser = require('body-parser'),
-  config = require('./config');
+  config = require('./config'),
+  TwitterRouter = require('../routes/tweet.server.routes');
 
 module.exports.init = function () {
   //connect to database
@@ -19,13 +20,17 @@ module.exports.init = function () {
   app.use(bodyParser.json());
 
 
-  /**TODO
-  Serve static files */
+ /* Serving static files */
   app.use('/', express.static('client'));
 
 
-  /**TODO 
-  Go to homepage for all routes not specified */
+ 
+  /* Go to homepage for all routes not specified */
   app.use(express.static('../../client/index.html'));
+
+ /* Route to make request to the twitter API */
+  app.use('/api/twitter', TwitterRouter);
+
+  
   return app;
 };  

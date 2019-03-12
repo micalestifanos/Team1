@@ -5,5 +5,11 @@ module.exports = {
   db: {
     uri: "", //place the URI of your mongo database here.
   }, 
-  port: process.env.PORT || 8080
+  port: process.env.PORT || 8080,
+  twitter_keys: {
+    consumer_key: 'v58J1CrMthlOjea64bQyDmxQ6',
+    consumer_secret: '0U44t2HuEfcfSjUTpa6IcWB7P1ZicFLZhLS3w8zoIOLpXzvKrJ',
+    access_token_key: '1105169141240135680-JJJ7y6RarmY14rTnhahma9q5xqOeHu',
+    access_token_secret: 'MtDCmtdwAnxeYCkoeDp075UzdOqxU2s2cixxUlNGZnwzK'
+  }
 };
