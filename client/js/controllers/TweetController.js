@@ -1,9 +1,9 @@
-angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter', 
-  function($scope, Twitter) {
+angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
+  function ($scope, Twitter) {
     /* Initialize showing the Global Trend */
-    Twitter.getGlobalTrends().then(function(response) {
+    Twitter.getGlobalTrends().then(function (response) {
       console.log(response.data);
-      firstChartElements = response.data;
+      var firstChartElements = response.data;
       drawFirstChart(firstChartElements);
       drawSecondChart(firstChartElements);
       drawTable(firstChartElements);
@@ -11,7 +11,7 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
 
 
       $scope.twitter = response.data;
-    }, function(error) {
+    }, function (error) {
       console.log('Unable to retrieve tweets:', error);
     });
   }

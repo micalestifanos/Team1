@@ -2,4 +2,4 @@
 angular.module('twitter', []);
 
 /* register the application and inject all the necessary dependencies */
-var app = angular.module('dashboardApp', ['twitter']);
+var app = angular.module('dashboardApp', ['twitter', 'ngRoute']);
