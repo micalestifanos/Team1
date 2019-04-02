@@ -17,6 +17,7 @@ exports.getGlobalTrends = function(req, res){
           console.log('Global Trending Request');
           for (let i = 0; i < 50; i++){
             tweet = {topic: data[0].trends[i].name, volume: data[0].trends[i].tweet_volume};
+            if(tweet.volume != null)
             tweets.push(tweet);
           }
           res.status(200).json(tweets);

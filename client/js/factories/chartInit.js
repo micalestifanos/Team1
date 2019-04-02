@@ -10,7 +10,7 @@ function drawFirstChart(jsonData) {
     data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if(jsonData != undefined){
-        for(i = 1; i < 50; i++){
+        for(i = 1; i < jsonData.length; i++){
 
             data.addRows([
             [jsonData[i].topic, jsonData[i].volume]
@@ -33,7 +33,7 @@ function drawSecondChart(jsonData) {
     data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if(jsonData != undefined){
-        for(i = 1; i < 50; i++){
+        for(i = 1; i < jsonData.length; i++){
 
             data.addRows([
             [jsonData[i].topic, jsonData[i].volume]
@@ -60,7 +60,7 @@ function drawSecondChart(jsonData) {
     data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if(jsonData != undefined){
-        for(i = 1; i < 50; i++){
+        for(i = 1; i < jsonData.length; i++){
 
             data.addRows([
             [jsonData[i].topic, jsonData[i].volume]
