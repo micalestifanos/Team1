@@ -10,50 +10,6 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- Google Charts -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-
-  <title>Metrics Dashboard</title>
-</head>
-
-<body ng-app="dashboardApp">
-  <h1>TweetData App!</h1>
-  <div class="row">
-    <div class="col-sm-1">
-      <h3>Menu</h3>
-      <!-- Side navigation -->
-      <div class="sidenav col-sm-1">
-        <a href="#">Overview</a>
-        <a href="#">Area</a>
-        <a href="#">Topics</a>
-        <a href="#">About</a>
-      </div>
-
-    </div>
-    <div class="col-sm-11">
-      <h2>Dashboard</h2>
-
-      <!-- Search form -->
-      <form class="form-inline active-cyan-3 active-cyan-4">
-        <i class="fas fa-search" aria-hidden="true"></i>
-        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-
-        <button type="button" class="btn btn-default">
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
-        </button>
-      </form>
-
-      <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
-        <div id="time-chart" class="col-md-6"></div>
-        <div id="second-chart" class="col-md-6"></div>
-      </div>
-
-      <div id="table_div"></div>
-
-    </div>
-
-  </div>
-
-
   <!-- CDN Dependencies for jQuery, Bootstrap and AngularJS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -66,11 +22,24 @@
     crossorigin="anonymous"></script>
   <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+  <title>Metrics Dashboard</title>
+</head>
+
+<body ng-app="dashboardApp">
+  <h1>TweetData App!</h1>
+
+  <li><a href="#/login">Login</a></li>
+  <li><a href="#/index">App</a></li>
+
+  <div ng-view></div>
+
   <!-- Source Scripts -->
   <script src="js/app.js"></script>
   <script src="js/factories/chartInit.js"></script>
   <script src="js/factories/TweetFactory.js"></script>
   <script src="js/controllers/TweetController.js"></script>
+  <script src="js/controllers/authController.js"></script>
   <!--  -->
 </body>
 

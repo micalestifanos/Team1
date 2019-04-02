@@ -7,10 +7,13 @@ var app = angular.module('dashboardApp', ['twitter', 'ngRoute', 'auth']);
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/login', {
-            templateUrl: '../components/Login.html',
+            templateUrl: '/components/Login.html',
             controller: 'authController'
         })
-        .when('/', {
-
+        .when('/index', {
+            templateUrl: '/components/Dashboard.html'
         })
+        .otherwise({
+            redirectTo: '/index'
+        });
 }]);
