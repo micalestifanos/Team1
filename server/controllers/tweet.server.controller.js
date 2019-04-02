@@ -31,8 +31,17 @@ exports.getGlobalTrends = function(req, res){
     });
     
 }
-
+//Defaults to return most popular, can be changed to mixed and recent
+//Defaults to 100 tweets
 exports.searchTweet = function(req, res){
+  var params = {
+    q: req,
+    result_type: 'popular',
+    count: '100'
+  }
+
+  var tweets = [{text: String, username: String}];
+  
 
 }
   
