@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
      <!-- Required tags -->
      <meta charset="utf-8">
@@ -6,51 +7,220 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Google Charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
     <title>Metrics Dashboard</title>
   </head>
+
   <body ng-app="dashboardApp">
-    <h1>TweetData App!</h1>
-    <div class="row">
-      <div class="col-sm-1">
-        <h3>Menu</h3>
-        <!-- Side navigation -->
-        <div class="sidenav col-sm-1">
-          <a href="#">Overview</a>
-          <a href="#">Area</a>
-          <a href="#">Topics</a>
-          <a href="#">About</a>
-        </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="bg-light col-sm-2">
+          <div class="demo-content">
+            <h1>TweetData</h1>
 
-      </div>
-      <div class="col-sm-11">
-        <h2>Dashboard</h2>
-
-            <!-- Search form -->
-            <form class="form-inline active-cyan-3 active-cyan-4">
-              <i class="fas fa-search" aria-hidden="true"></i>
-              <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-
-              <button type="button" class="btn btn-default">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
-              </button>
-            </form>
-
-            <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
-              <div id="time-chart" class="col-md-6"></div>
-              <div id="second-chart" class="col-md-6"></div>
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+              <div class="list-group list-group-flush">
+                <a href="index.html" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#aboutModal">About</a>
+                <!--
+                <a href="login.html" class="list-group-item list-group-item-action bg-light">Login</a>
+              -->
+                <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginModal">Login</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+              </div>
             </div>
 
-              <div id="table_div"></div>
+            <!-- Login Modal -->
+            <div id="signupModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
 
+                <!-- Login Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <h4 class="modal-title">Sign Up</h4>
+
+
+
+                    <div class="input-group login">
+                      <form style="width: 70%; : center;">
+                        <div class="form-group">
+                          <label for="inputEmail">Email</label>
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword">Password</label>
+                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword">Confirm Password</label>
+                          <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Create Your Account</button>
+                      </div>
+
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sign Up Modal -->
+            <div id="loginModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Sign Up Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                  </div>
+                  <div class="modal-body">
+
+                    <h4 class="modal-title">Login</h4>
+
+                    <div class="input-group login">
+                      <form style="width: 70%; : center;">
+                        <div class="form-group">
+                          <label for="inputEmail">Email</label>
+                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword">Password</label>
+                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                        <div class="checkbox">
+                          <label><input type="checkbox">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                      </div>
+
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- About Modal -->
+            <div id="aboutModal" class="modal fade" role="dialog">
+              <div class="modal-dialog modal-lg">
+
+                <!-- About Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <h3 class="display-4">TweetData <small>An analytical data application for Twitter users</small></h3>
+
+                    <p>TweetData is a web application that allows users to see what topics are <b>trending</b> in specific areas.</p>
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Dashboard Grid-->
+        <div class="col-sm-10">
+          <div class="demo-content bg-alt">
+            <!--
+            <h1>.col-sm-10</h1>
+            <h2>Dashboard</h2>
+          -->
+
+          <!--Search bar-->
+            <div class="input-group searchbar">
+                  <input type="text" name="search" id="search" class="form-control" placeholder="Search location" />
+                  <span class="input-group-addon" for="search">
+                      <i class="glyphicon glyphicon-search"></i>
+                  </span>
+              </div>
+
+              <!-- Graph checkboxes
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">Histogram</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">Pie Chart</label>
+              </div>
+            -->
+
+            <!-- Prettier in line checkboxes for graphs-->
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline1">
+              <label class="custom-control-label" for="defaultInline1">Histogram</label>
+            </div>
+
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline2">
+              <label class="custom-control-label" for="defaultInline2">Pie Chart</label>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="nested-content">
+                    <div id="table_div"></div>
+                  </div>
+
+                  <div class="col text-center">
+                    <button type="button" class="btn btn-outline-primary .btn-lg" style="margin-bottom: 10px;">Show graphs</button>
+                  </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="nested-content">
+                    <!-- <p>Nested content 2</p> -->
+                    <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
+                      <div id="time-chart" class="col-md-6"></div>
+                      <div id="second-chart" class="col-md-6"></div>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+
+          </div>
+        </div>
       </div>
-
     </div>
 
-</body>
+
+
+
+
 
   <!-- CDN Dependencies for jQuery, Bootstrap and AngularJS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -64,7 +234,6 @@
   <script src="js/app.js"></script>
   <script src="js/factories/chartInit.js"></script>
   <!--  -->
-</body>
 
     <!-- CDN Dependencies for jQuery, Bootstrap and AngularJS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

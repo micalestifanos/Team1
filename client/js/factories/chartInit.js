@@ -11,13 +11,13 @@ function drawFirstChart(jsonData) {
     data.addColumn('number', 'Volume');
     if(jsonData != undefined){
         for(i = 1; i < 50; i++){
-            
+
             data.addRows([
             [jsonData[i].topic, jsonData[i].volume]
             ]);
             }
 
-        
+
     }
     var options = {
         title: 'Global Trends',
@@ -34,15 +34,15 @@ function drawSecondChart(jsonData) {
     data.addColumn('number', 'Volume');
     if(jsonData != undefined){
         for(i = 1; i < 50; i++){
-            
+
             data.addRows([
             [jsonData[i].topic, jsonData[i].volume]
             ]);
             }
-        
+
     }
 
-    
+
     var options = {title:'Classes Topics',
                    width:400,
                    height:300};
@@ -53,20 +53,20 @@ function drawSecondChart(jsonData) {
   }
 
 
- 
+
 
   function drawTable(jsonData) {
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Tremd');
+    data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if(jsonData != undefined){
         for(i = 1; i < 50; i++){
-            
+
             data.addRows([
             [jsonData[i].topic, jsonData[i].volume]
             ]);
             }
-        
+
     }
     var table = new google.visualization.Table(document.getElementById('table_div'));
 
