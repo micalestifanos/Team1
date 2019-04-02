@@ -24,7 +24,7 @@ function drawFirstChart(jsonData) {
             ]);
             }
 
-        
+
     }
     var options = {
         title: 'Global Trends',
@@ -46,10 +46,10 @@ function drawSecondChart(jsonData) {
             [jsonData[i].topic, jsonData[i].volume]
             ]);
             }
-        
+
     }
 
-    
+
     var options = {title:'Classes Topics',
                    width:400,
                    height:300};
@@ -60,7 +60,7 @@ function drawSecondChart(jsonData) {
   }
 
 
- 
+
 
   function drawTable(jsonData) {
     var data = new google.visualization.DataTable();
@@ -73,7 +73,7 @@ function drawSecondChart(jsonData) {
             [jsonData[i].topic, jsonData[i].volume]
             ]);
             }
-        
+
     }
     var table = new google.visualization.Table(document.getElementById('table_div'));
 
