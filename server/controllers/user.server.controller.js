@@ -6,13 +6,14 @@ const secret = require('../config/config').secretOrKey;
 
 
 exports.registerUser = function (req, res) {
-    User.findOne({ name: req.body.name })
+
+    User.findOne({ email: req.body.email })
         .then(user => {
             if (user) {
                 return res.status(400);
             } else {
                 const newUser = new User({
-                    name: req.body.name,
+                    email: req.body.email,
                     password: req.body.password
                 });
 
@@ -28,7 +29,7 @@ exports.registerUser = function (req, res) {
 }
 
 exports.loginUser = function (req, res) {
-    User.findOne({ name: req.body.name })
+    User.findOne({ email: req.body.email })
         .then(user => {
             if (!user) {
                 return res.status(404);
@@ -37,12 +38,12 @@ exports.loginUser = function (req, res) {
             bcrypt.compare(req.body.password, user.password)
                 .then(isMatch => {
                     if (isMatch) {
-                        const payload = { id: user.id, name: user.name };
+                        const payload = { id: user.id, email: user.email };
                         jwt.sign(payload, secret, { expiresIn: '1d' }, (err, token) => {
                             return res.json({ success: true, token: `Bearer ${token}` });
                         });
                     } else {
-                        return res.status(400).json({ errors: "Incorrect password" });
+                        return res.status(400).json({ success: false, errors: "Incorrect password" });
                     }
                 });
         });

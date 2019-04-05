@@ -12,7 +12,7 @@ var Twitter = require('../controllers/tweet.server.controller.js'),
 // @route  /api/twitter/
 // @desc   Gets twitter information
 // @access Private
-router.route('/').get(/*passport.authenticate('jwt', { session: false }),*/ Twitter.getGlobalTrends)
+router.route('/').get(passport.authenticate('jwt', { session: false }), Twitter.getGlobalTrends)
 
 
 

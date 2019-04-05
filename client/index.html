@@ -45,11 +45,11 @@
             </div>
           </div>
 
-          <!-- Login Modal -->
-          <div id="signupModal" class="modal fade" role="dialog">
+          <!-- Sign Up Modal -->
+          <div id="signupModal" class="modal fade" role="dialog" ng-controller="AuthController">
             <div class="modal-dialog">
 
-              <!-- Login Modal content-->
+              <!--Sign Up content-->
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -60,21 +60,23 @@
 
 
                   <div class="input-group login">
-                    <form style="width: 70%; : center;">
+                    <form style="width: 70%; display: inline-block">
                       <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <label for="inputRegisterEmail">Email</label>
+                        <input type="email" class="form-control" id="inputRegisterEmail" placeholder="Email"
+                          ng-model="newUser.email">
                       </div>
                       <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <label for="inputRegisterPassword">Password</label>
+                        <input type="password" class="form-control" id="inputRegisterPassword" placeholder="Password"
+                          ng-model="newUser.password">
                       </div>
                       <div class="form-group">
-                        <label for="inputPassword">Confirm Password</label>
+                        <label for="inputConfirmPassword">Confirm Password</label>
                         <input type="password" class="form-control" id="inputConfirmPassword"
-                          placeholder="Confirm Password">
+                          placeholder="Confirm Password" ng-model="newUser.password2">
                       </div>
-                      <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Create Your
+                      <button class="btn btn-primary" style="margin-top: 10px;" ng-click="addUser()">Create Your
                         Account</button>
                   </div>
 
@@ -88,11 +90,11 @@
             </div>
           </div>
 
-          <!-- Sign Up Modal -->
-          <div id="loginModal" class="modal fade" role="dialog">
+          <!-- Login Modal -->
+          <div id="loginModal" class="modal fade" role="dialog" ng-controller="AuthController">
             <div class="modal-dialog">
 
-              <!-- Sign Up Modal content-->
+              <!--Login Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -103,19 +105,21 @@
                   <h4 class="modal-title">Login</h4>
 
                   <div class="input-group login">
-                    <form style="width: 70%; : center;">
+                    <form style="width: 70%; display: inline-block">
                       <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        <label for="inputLoginEmail">Email</label>
+                        <input type="email" class="form-control" id="inputLoginEmail" placeholder="Email"
+                          ng-model="loginUser.email">
                       </div>
                       <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <label for="inputLoginPassword">Password</label>
+                        <input type="password" class="form-control" id="inputLoginPassword" placeholder="Password"
+                          ng-model="loginUser.password">
                       </div>
                       <div class="checkbox">
-                        <label><input type="checkbox">Remember me</label>
+                        <label><input type="checkbox" ng-click="rememberMe()">Remember me</label>
                       </div>
-                      <button type="submit" class="btn btn-primary">Login</button>
+                      <button ng-click="signIn()" class="btn btn-primary">Login</button>
                   </div>
 
 
@@ -165,53 +169,54 @@
             <h1>.col-sm-10</h1>
             <h2>Dashboard</h2>
           -->
-
-          <!--Search bar-->
-          <div class="input-group searchbar">
-            <input type="text" name="search" id="search" class="form-control" placeholder="Search location" />
-            <span class="input-group-addon" for="search">
-              <i class="glyphicon glyphicon-search"></i>
-            </span>
-          </div>
-
-
-
-          <!-- Prettier in line checkboxes for graphs-->
-          <div class="custom-control custom-checkbox custom-control-inline">
-            <input type="checkbox" class="custom-control-input" id="defaultInline1" name="time-chart"
-              onclick="showMe('time-chart')">
-            <label class="custom-control-label" for="defaultInline1">Histogram</label>
-          </div>
-
-          <div class="custom-control custom-checkbox custom-control-inline">
-            <input type="checkbox" class="custom-control-input" id="defaultInline2" name="second-chart"
-              onclick="showMe('second-chart')">
-            <label class="custom-control-label" for="defaultInline2">Pie Chart</label>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="nested-content">
-                <div id="table_div"></div>
-              </div>
-
-              <div class="col text-center">
-                <button type="button" class="btn btn-outline-primary .btn-lg" style="margin-bottom: 10px;">Show
-                  graphs</button>
-              </div>
-
+          <div>
+            <!--Search bar-->
+            <div class="input-group searchbar">
+              <input type="text" name="search" id="search" class="form-control" placeholder="Search location" />
+              <span class="input-group-addon" for="search">
+                <i class="glyphicon glyphicon-search"></i>
+              </span>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="nested-content">
-                <!-- <p>Nested content 2</p> -->
-                <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
-                  <div id="time-chart" class="col-md-6"></div>
-                  <div id="second-chart" class="col-md-6"></div>
+
+
+            <!-- Prettier in line checkboxes for graphs-->
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline1" name="time-chart"
+                onclick="showMe('time-chart')">
+              <label class="custom-control-label" for="defaultInline1">Histogram</label>
+            </div>
+
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline2" name="second-chart"
+                onclick="showMe('second-chart')">
+              <label class="custom-control-label" for="defaultInline2">Pie Chart</label>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="nested-content">
+                  <div id="table_div"></div>
                 </div>
 
+                <div class="col text-center">
+                  <button type="button" class="btn btn-outline-primary .btn-lg" style="margin-bottom: 10px;">Show
+                    graphs</button>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="nested-content">
+                  <!-- <p>Nested content 2</p> -->
+                  <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
+                    <div id="time-chart" class="col-md-6"></div>
+                    <div id="second-chart" class="col-md-6"></div>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
@@ -257,7 +262,9 @@
   <script src="js/app.js"></script>
   <script src="js/factories/chartInit.js"></script>
   <script src="js/factories/TweetFactory.js"></script>
+  <script src="js/factories/AuthFactory.js"></script>
   <script src="js/controllers/TweetController.js"></script>
+  <script src="js/controllers/AuthController.js"></script>
   <!--  -->
 </body>
 
