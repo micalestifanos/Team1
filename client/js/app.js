@@ -1,7 +1,9 @@
 /* register the modules the application depends upon here*/
 angular.module('twitter', []);
+angular.module('userAuth', []);
 
 /* register the application and inject all the necessary dependencies */
+<<<<<<< HEAD
 var app = angular.module('dashboardApp', ['twitter', 'ngRoute', 'auth']);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -17,3 +19,6 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '/index'
         });
 }]);
+=======
+var app = angular.module('dashboardApp', ['twitter', 'userAuth']);
+>>>>>>> master

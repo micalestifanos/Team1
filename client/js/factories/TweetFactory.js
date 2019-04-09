@@ -1,9 +1,13 @@
-angular.module('twitter', []).factory('Twitter', function($http) {
-    var methods = {
-      getGlobalTrends: function() {
-        return $http.get('/api/twitter');
+angular.module('twitter', []).factory('Twitter', function ($http) {
+  var methods = {
+    getGlobalTrends: function (token) {
+      if (token) {
+        $http.defaults.headers.common.Authorization = token;
+      } else {
+        delete $http.defaults.headers.common.Authorization;
       }
-    };
-    return methods;
-  });
-  
+      return $http.get('/api/twitter');
+    }
+  };
+  return methods;
+});

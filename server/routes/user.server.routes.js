@@ -8,7 +8,7 @@ const UserController = require('../controllers/user.server.controller.js');
 // @access  Public
 router.route('/register').post(UserController.registerUser);
 
-// @route   POST /api/user/login
+// @route   POST /api/users/login
 // @desc    Authenticates user and returns token
 // @access  PUBLIC
 router.route('/login').post(UserController.loginUser);

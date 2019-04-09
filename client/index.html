@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <!-- Required tags -->
@@ -8,8 +9,228 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- Google Charts -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="js/factories/chartInit.js"></script>
+
+  <title>Metrics Dashboard</title>
+</head>
+
+<body ng-app="dashboardApp">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="bg-light col-sm-2">
+        <div class="demo-content">
+          <h1>TweetData</h1>
+          <img src="/twitterlogo.png" alt="Twitter Logo" class="img-thumbnail" />
+
+          <!-- Sidebar -->
+          <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="list-group list-group-flush">
+              <!-- refresh -->
+              <a href="." class="list-group-item list-group-item-action bg-light">Dashboard</a>
+              <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal"
+                data-target="#aboutModal">About</a>
+              <!--
+                <a href="login.html" class="list-group-item list-group-item-action bg-light">Login</a>
+              -->
+              <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal"
+                data-target="#loginModal">Login</a>
+              <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal"
+                data-target="#signupModal">Sign Up</a>
+              <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+            </div>
+          </div>
+
+          <!-- Sign Up Modal -->
+          <div id="signupModal" class="modal fade" role="dialog" ng-controller="AuthController">
+            <div class="modal-dialog">
+
+              <!--Sign Up content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <h4 class="modal-title">Sign Up</h4>
+
+
+
+                  <div class="input-group login">
+                    <form style="width: 70%; display: inline-block">
+                      <div class="form-group">
+                        <label for="inputRegisterEmail">Email</label>
+                        <input type="email" class="form-control" id="inputRegisterEmail" placeholder="Email"
+                          ng-model="newUser.email">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputRegisterPassword">Password</label>
+                        <input type="password" class="form-control" id="inputRegisterPassword" placeholder="Password"
+                          ng-model="newUser.password">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputConfirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="inputConfirmPassword"
+                          placeholder="Confirm Password" ng-model="newUser.password2">
+                      </div>
+                      <button class="btn btn-primary" style="margin-top: 10px;" ng-click="addUser()">Create Your
+                        Account</button>
+                  </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Login Modal -->
+          <div id="loginModal" class="modal fade" role="dialog" ng-controller="AuthController">
+            <div class="modal-dialog">
+
+              <!--Login Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+
+                  <h4 class="modal-title">Login</h4>
+
+                  <div class="input-group login">
+                    <form style="width: 70%; display: inline-block">
+                      <div class="form-group">
+                        <label for="inputLoginEmail">Email</label>
+                        <input type="email" class="form-control" id="inputLoginEmail" placeholder="Email"
+                          ng-model="loginUser.email">
+                      </div>
+                      <div class="form-group">
+                        <label for="inputLoginPassword">Password</label>
+                        <input type="password" class="form-control" id="inputLoginPassword" placeholder="Password"
+                          ng-model="loginUser.password">
+                      </div>
+                      <div class="checkbox">
+                        <label><input type="checkbox" ng-click="rememberMe()">Remember me</label>
+                      </div>
+                      <button ng-click="signIn()" class="btn btn-primary">Login</button>
+                  </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- About Modal -->
+          <div id="aboutModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+              <!-- About Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <h3 class="display-4">TweetData <small>An analytical data application for Twitter users</small></h3>
+
+                  <p>TweetData is a web application that allows users to see what topics are <b>trending</b> in specific
+                    areas.</p>
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Dashboard Grid-->
+      <div class="col-sm-10">
+        <div class="demo-content bg-alt">
+          <!--
+            <h1>.col-sm-10</h1>
+            <h2>Dashboard</h2>
+          -->
+          <div>
+            <!--Search bar-->
+            <div class="input-group searchbar">
+              <input type="text" name="search" id="search" class="form-control" placeholder="Search location" />
+              <span class="input-group-addon" for="search">
+                <i class="glyphicon glyphicon-search"></i>
+              </span>
+            </div>
+
+
+
+            <!-- Prettier in line checkboxes for graphs-->
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline1" name="time-chart"
+                onclick="showMe('time-chart')">
+              <label class="custom-control-label" for="defaultInline1">Histogram</label>
+            </div>
+
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input type="checkbox" class="custom-control-input" id="defaultInline2" name="second-chart"
+                onclick="showMe('second-chart')">
+              <label class="custom-control-label" for="defaultInline2">Pie Chart</label>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="nested-content">
+                  <div id="table_div"></div>
+                </div>
+
+                <div class="col text-center">
+                  <button type="button" class="btn btn-outline-primary .btn-lg" style="margin-bottom: 10px;">Show
+                    graphs</button>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="nested-content">
+                  <!-- <p>Nested content 2</p> -->
+                  <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
+                    <div id="time-chart" class="col-md-6"></div>
+                    <div id="second-chart" class="col-md-6"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
   <!-- CDN Dependencies for jQuery, Bootstrap and AngularJS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -21,23 +242,27 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-
-  <title>Metrics Dashboard</title>
-</head>
-
-<body ng-app="dashboardApp">
-  <h1>TweetData App!</h1>
-
-  <li><a href="#/login">Login</a></li>
-  <li><a href="#/index">App</a></li>
-
-  <div ng-view></div>
-
   <!-- Source Scripts -->
   <script src="js/app.js"></script>
   <script src="js/factories/chartInit.js"></script>
+  <!--  -->
+
+  <!-- CDN Dependencies for jQuery, Bootstrap and AngularJS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+  <!-- Source Scripts -->
+  <script src="js/app.js"></script>
   <script src="js/factories/TweetFactory.js"></script>
+  <script src="js/factories/AuthFactory.js"></script>
+  <script src="js/controllers/AuthController.js"></script>
   <script src="js/controllers/TweetController.js"></script>
   <script src="js/controllers/authController.js"></script>
   <!--  -->
