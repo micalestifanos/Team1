@@ -18,7 +18,7 @@
   </head>
 
   <body ng-app="dashboardApp">
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="TwitterController">
       <div class="row">
         <div class="bg-light col-sm-2">
           <div class="demo-content">
@@ -57,12 +57,12 @@
                     <div class="input-group login">
                       <form style="width: 70%; : center;">
                         <div class="form-group">
-                          <label for="inputEmail">Email</label>
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          <label for="loginEmail">Email</label>
+                          <input type="email" class="form-control" id="loginEmail" placeholder="Email">
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword">Password</label>
-                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                          <label for="loginPassword">Password</label>
+                          <input type="password" class="form-control" id="loginPassword" placeholder="Password">
                         </div>
                         <div class="form-group">
                           <label for="inputPassword">Confirm Password</label>
@@ -98,12 +98,12 @@
                     <div class="input-group login">
                       <form style="width: 70%; : center;">
                         <div class="form-group">
-                          <label for="inputEmail">Email</label>
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          <label for="signupEmail">Email</label>
+                          <input type="email" class="form-control" id="signupEmail" placeholder="Email">
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword">Password</label>
-                          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                          <label for="signupPassword">Password</label>
+                          <input type="password" class="form-control" id="signupPassword" placeholder="Password">
                         </div>
                         <div class="checkbox">
                           <label><input type="checkbox">Remember me</label>
@@ -159,12 +159,51 @@
           -->
 
           <!--Search bar-->
-            <div class="input-group searchbar">
-                  <input type="text" name="search" id="search" class="form-control" placeholder="Search location" />
-                  <span class="input-group-addon" for="search">
-                      <i class="glyphicon glyphicon-search"></i>
-                  </span>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">Button</button>
               </div>
+              <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group searchbar">
+              <div class="input-group-prepend">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchList" ng-click="searchTweet()">
+                  Search 
+              </button>
+            </div>
+                  <input type="text" name="search" id="search" class="form-control" placeholder="Search" ng-model="searchWord.text"/>
+              </div>
+
+              <div class="modal fade" id="searchList" tabindex="-1" role="dialog" aria-labelledby="searchListLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="searchListLabel">Search for: "{{searchWord.text}}"</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="tableWrapper">
+                              <table class="table table-striped table-hover">
+                                <tr>
+                                  <th>Tweet</th>
+                                  <th>Info</th>
+                                  <th></th>
+                                </tr>
+                                <tr ng-repeat="tweet in search | filter: query">
+                                  <td>{{tweet.text}}</td>
+                                  <td>By: {{tweet.username}} Followers: {{tweet.followers}} Retweet: {{tweet.retweet}} URL: {{tweet.url}}</td>
+                                </tr>
+                              </table>
+                            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <h3>{{tweet.username}}</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
 
 
@@ -196,7 +235,7 @@
                 <div class="col-xs-12">
                   <div class="nested-content">
                     <!-- <p>Nested content 2</p> -->
-                    <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
+                    <div id="chart-area" class="row mb-6"ng-controller="TwitterController">
                       <div id="time-chart" class="col-md-6"></div>
                       <div id="second-chart" class="col-md-6"></div>
                     </div>
