@@ -18,9 +18,9 @@
   </head>
 
   <body ng-app="dashboardApp">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="bg-light col-sm-2">
+    <div class="container-fluid h-100">
+      <div class="row h-100">
+        <div class="bg-light col-sm-2" id="col1">
           <div class="demo-content">
             <h1>TweetData</h1>
              <img src = "/twitterlogo.png" alt = "Twitter Logo" class="img-thumbnail" />
@@ -31,9 +31,6 @@
                 <!-- refresh -->
                 <a href="." class="list-group-item list-group-item-action bg-light">Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#aboutModal">About</a>
-                <!--
-                <a href="login.html" class="list-group-item list-group-item-action bg-light">Login</a>
-              -->
                 <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#loginModal">Login</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light" data-toggle="modal" data-target="#signupModal">Sign Up</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
@@ -51,8 +48,6 @@
                   </div>
                   <div class="modal-body">
                     <h4 class="modal-title">Sign Up</h4>
-
-
 
                     <div class="input-group login">
                       <form style="width: 70%; : center;">
@@ -80,6 +75,7 @@
                 </div>
               </div>
             </div>
+
 
             <!-- Sign Up Modal -->
             <div id="loginModal" class="modal fade" role="dialog">
@@ -110,8 +106,6 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                       </div>
-
-
 
                   </div>
                   <div class="modal-footer">
@@ -150,35 +144,57 @@
           </div>
         </div>
 
+
+
         <!-- Dashboard Grid-->
-        <div class="col-sm-10">
-          <div class="demo-content bg-alt">
-            <!--
-            <h1>.col-sm-10</h1>
-            <h2>Dashboard</h2>
-          -->
+        <div class="col-sm-10 dashboard" id="col2">
+          <div class="demo-content bg-alt" style="height:100%">
+
+
+
 
           <!--Search bar-->
-            <div class="input-group searchbar">
+            <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
                   <input type="text" name="search" id="search" class="form-control" placeholder="Search location" />
                   <span class="input-group-addon" for="search">
                       <i class="glyphicon glyphicon-search"></i>
                   </span>
               </div>
 
+            <!-- Test card -->
+            <div class="card shadow p-3 mb-5 bg-white">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs"  id="myTab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Table</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graph</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pie-tab" data-toggle="tab" href="#pie" role="tab" aria-controls="pie" aria-selected="false">Pie Chart</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane active" id="table" role="tabpanel" aria-labelledby="table-tab">
+                    <div id="table_div"></div>
 
-
-            <!-- Prettier in line checkboxes for graphs-->
-            <div class="custom-control custom-checkbox custom-control-inline">
-              <input type="checkbox" class="custom-control-input" id="defaultInline1" name="time-chart" onclick="showMe('time-chart')">
-              <label class="custom-control-label" for="defaultInline1">Histogram</label>
+                  </div>
+                  <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+                    <div id="time-chart" class="col-md-6"></div>
+                  </div>
+                  <div class="tab-pane fade" id="pie" role="tabpanel" aria-labelledby="pie-tab">
+                    <div id="second-chart" class="col-md-6"></div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="custom-control custom-checkbox custom-control-inline">
-              <input type="checkbox" class="custom-control-input" id="defaultInline2" name="second-chart" onclick="showMe('second-chart')">
-              <label class="custom-control-label" for="defaultInline2">Pie Chart</label>
-            </div>
 
+
+            <!--
             <div class="row">
                 <div class="col-xs-12">
                   <div class="nested-content">
@@ -195,15 +211,17 @@
             <div class="row">
                 <div class="col-xs-12">
                   <div class="nested-content">
-                    <!-- <p>Nested content 2</p> -->
+                    <!-- <p>Nested content 2</p>
                     <div id="chart-area" class="row mb-6" ng-controller="TwitterController">
                       <div id="time-chart" class="col-md-6"></div>
                       <div id="second-chart" class="col-md-6"></div>
                     </div>
 
+
                   </div>
                 </div>
             </div>
+          -->
 
           </div>
         </div>

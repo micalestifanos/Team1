@@ -43,7 +43,7 @@ function drawSecondChart(jsonData) {
     }
 
 
-    var options = {title:'Classes Topics',
+    var options = {title:'Topics',
                    width:400,
                    height:300};
 
