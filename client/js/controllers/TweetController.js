@@ -1,20 +1,19 @@
-angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
-  function ($scope, Twitter) {
+angular.module('twitter').controller('TwitterController', ['$scope', '$window', 'Twitter',
+  function ($scope, $window, Twitter) {
     /* Initialize showing the Global Trend */
     Twitter.getGlobalTrends(localStorage.getItem('Token')).then(function (response) {
       console.log(response.data);
-      if (response.data == "Unauthorized") {
-        $scope.message = 'Please login or sign up to view Twitter statistics.';
-      } else {
-        var firstChartElements = response.data;
-        drawFirstChart(firstChartElements);
-        drawSecondChart(firstChartElements);
-        drawTable(firstChartElements);
-        $scope.twitter = response.data;
-      }
+
+      var firstChartElements = response.data;
+      drawFirstChart(firstChartElements);
+      drawSecondChart(firstChartElements);
+      drawTable(firstChartElements);
+      $scope.twitter = response.data;
 
     }, function (error) {
       console.log('Unable to retrieve tweets:', error);
+      $window.location.href = "../../login.html";
+
     });
   }
 ]);
