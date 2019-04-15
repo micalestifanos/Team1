@@ -1,16 +1,22 @@
-google.charts.load('current', { 'packages': ['corechart'] });
-google.charts.load('current', { 'packages': ['table'] });
-google.charts.setOnLoadCallback(drawFirstChart);
-google.charts.setOnLoadCallback(drawSecondChart);
-google.charts.setOnLoadCallback(drawTable);
+google.charts.load('current', { 'packages': ['corechart', 'table'] });
+// google.charts.load('current', {'packages':['table']});
+// google.charts.setOnLoadCallback(updateCharts);
+// google.charts.setOnLoadCallback();
+// google.charts.setOnLoadCallback(drawSecondChart);
+// google.charts.setOnLoadCallback(drawTable);
 
+function updateCharts(jsonData) {
+    // drawFirstChart(jsonData);
+    // drawSecondChart(jsonData);
+    drawTable(jsonData);
+}
 
 function drawFirstChart(jsonData) {
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if (jsonData != undefined) {
-        for (i = 1; i < 50; i++) {
+        for (i = 1; i < jsonData.length; i++) {
 
             data.addRows([
                 [jsonData[i].topic, jsonData[i].volume]
@@ -33,7 +39,7 @@ function drawSecondChart(jsonData) {
     data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if (jsonData != undefined) {
-        for (i = 1; i < 50; i++) {
+        for (i = 1; i < jsonData.length; i++) {
 
             data.addRows([
                 [jsonData[i].topic, jsonData[i].volume]
@@ -44,7 +50,7 @@ function drawSecondChart(jsonData) {
 
 
     var options = {
-        title: 'Classes Topics',
+        title: 'Topics',
         width: 400,
         height: 300
     };
@@ -62,7 +68,7 @@ function drawTable(jsonData) {
     data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if (jsonData != undefined) {
-        for (i = 1; i < 50; i++) {
+        for (i = 1; i < jsonData.length; i++) {
 
             data.addRows([
                 [jsonData[i].topic, jsonData[i].volume]

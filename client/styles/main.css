@@ -6,16 +6,19 @@
   margin-bottom: 10px;
 }
 */
+html,body {
+  height: 100%;
+}
 .demo-content.bg-alt {
   background: rgb(66, 191, 244, 0.4);
 }
 .nested-content {
   min-height: 150px;
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
   background: white;
 }
 #table_div {
-  margin-top: 20px;
+
 }
 .login {
 }
@@ -28,8 +31,19 @@
 */
 
 .searchbar {
-  margin-bottom: 20px;
+  padding: 20px;
+  margin: auto;
+  width: 95%;
 }
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  width: 95%;
+}
+
+html, body { height: 100%;}
+
 
 
 /*
