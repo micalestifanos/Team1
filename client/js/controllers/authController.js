@@ -6,7 +6,6 @@ angular.module('userAuth').controller('AuthController', ['$scope', '$window', 'U
         $scope.loginUser.email = localStorage.getItem('userEmail');
 
         $scope.addUser = function () {
-            console.log('addUser() called...');
 
             var createUser = {};
 
