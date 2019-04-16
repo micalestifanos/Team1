@@ -7,7 +7,9 @@ angular.module('twitter', []).factory('Twitter', function ($http) {
         delete $http.defaults.headers.common.Authorization;
       }
       return $http.get('/api/twitter');
+    },
+    search: function (word) {
+      return $http.get('/api/twitter/search/' + word, word);
     }
-  };
-  return methods;
+  }
 });
