@@ -168,26 +168,56 @@
             </div>
                   <input type="text" name="search" id="search" class="form-control" placeholder="Search" ng-model="searchWord.text"/>
               </div> -->
-
+              
+              <!-- <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded"> 
+                <input type="text" name="search" id="search" style="width: 50%" class="form-control" placeholder="Search tweet"  ng-model="searchWord.text">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#searchList" ng-click="searchTweet()">Search</button>
+                  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Popular</a>
+                    <a class="dropdown-item" href="#">Mixed</a>
+                    <a class="dropdown-item" href="#">Recent</a>
+                  </div>
+                </div>
+              </div> -->
+                <!-- <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div role="separator" class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>  -->
+              <!-- </div> -->
+  
+              <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
+                  <form>
+                      <div class="row">
+                        <div class="col">
+                            <label for="searchType">Search Type:</label>
+                            <select id="searchType" class="form-control">
+                                <option>Large select</option>
+                              </select>
+                        </div>
+                        <div class="col">
+                            <label for="searchType">Search Location:</label>
+                          <input type="text" class="form-control" placeholder="Global" ng-model="searchWord.location">
+                        </div>
+                      </div>
+                    </form>
+              </div>
             <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
                 <input type="text" name="search" id="search" class="form-control" placeholder="Search tweet"  ng-model="searchWord.text" />
                 <span   for="search" class="btn input-group-addon"  data-toggle="modal" data-target="#searchList" ng-click="searchTweet()">
                     <i class="glyphicon glyphicon-search"></i>
                 </span>
-                <span>
-                  <div class="dropdown show">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Dropdown link
-                    </a>
-                  
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </span>
             </div>
+            
 
             
 

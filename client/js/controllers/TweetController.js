@@ -20,6 +20,8 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
   $scope.searchTweet = function(){
       Twitter.search($scope.searchWord.text).then(function(response){
         $scope.search = response.data;
+        console.log("Search for:" + $scope.searchWord.text);
+        console.log($scope.searchWord.location);
         console.log(response.data);
       }, function(error) {
         console.log('Unable to retrieve tweets:', error);
