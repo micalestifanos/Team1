@@ -8,7 +8,11 @@ var Twitter = require('../controllers/tweet.server.controller.js'),
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
 router.route('/').get(Twitter.getGlobalTrends);
-router.route('/search/:searchWord').get(Twitter.searchTweet);
+router.route('/search/:searchWord/:type').get(Twitter.searchTweet);
+router.route('/search/:searchWord/:latitude/:longitude/:type').get(Twitter.searchTweetByLocation);
+router.route('/location/:location').get(Twitter.getLocation);
+
+
 
 // router.param('searchWord', Twitter.searchWord);
 

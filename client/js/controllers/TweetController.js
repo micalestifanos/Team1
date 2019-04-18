@@ -18,7 +18,8 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
     });
   // DOES NOT WORK WITH "#"
   $scope.searchTweet = function(){
-      Twitter.search($scope.searchWord.text).then(function(response){
+    if($scope.searchWord.location != undefined){
+      Twitter.search($scope.searchWord.text, $scope.searchWord.type).then(function(response){
         $scope.search = response.data;
         console.log("Search for:" + $scope.searchWord.text);
         console.log($scope.searchWord.location);
@@ -26,6 +27,26 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
       }, function(error) {
         console.log('Unable to retrieve tweets:', error);
       });
+
+    }
+    else{
+      Twitter.searchByLocation($scope.searchWord.text, $scope.searchWord.location).then(function(response){
+        $scope.search = response.data;
+        console.log("Search for:" + $scope.searchWord.text);
+        console.log($scope.searchWord.location);
+        console.log(response.data);
+      }, function(error) {
+        console.log('Unable to retrieve tweets:', error);
+      });
+
+    }
   };
-  }
+
+
+
+  // $ScopedCredential.searchLocation = function(){
+    
+
+  // }
+}
 ]);

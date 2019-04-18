@@ -36,7 +36,7 @@ exports.getGlobalTrends = function(req, res){
 exports.searchTweet = function(req, res){
   var params = {
     q: req.params.searchWord,
-    result_type: 'popular',
+    result_type: req.params.type.toLowerCase(),
     count: '10'
   }
   console.log(req.params.searchWord);
@@ -63,5 +63,71 @@ exports.searchTweet = function(req, res){
   });
   
 
+};
+
+exports.searchTweetByLocation = function(req, res){
+  var params = {
+    q: req.params.searchWord,
+    result_type: 'req.params.type',
+    count: '10',
+    geocode: {longitude: req.params.longitude, latitude: req.params.latitude, radius: '50mi' }
+  }
+
+  var tweets = [{text: String, username: String, url: String, followers: Number, retweet: Number}];
+  // var location;
+
+  // TwitterController.get('/geo/search.json', req.params.location, function(err, data, result){
+  //   if(!err){
+  //     geocode.latitude = data.results.places[0];
+  //   }
+  //   else{
+  //     console.log("location error");
+  //     res.status(400).send(err);
+  //   }
+  // });
+    TwitterController.get('search/tweets.json', params, function(err, data, result){
+      if(!err){
+        // console.log(data.statuses[0].text);
+        var tweet;
+        for(var i = 0; i < data.statuses.length; i++){
+          tweet = {text: data.statuses[i].text, username: data.statuses[i].user.name,
+           url: data.statuses[i].user.url, followers: data.statuses[i].user.followers_count,
+          retweet: data.statuses[i].retweet_count};
+          tweets.push(tweet);
+  
+        }
+        // console.log(data);
+        res.status(200).json(tweets);
+      }
+      else{
+        console.log("ERRRROROROROROR");
+        console.log(err);
+        res.status(400).send(err);
+      }
+    });
+
+
+
+
+};
+
+exports.getLocation = function(req, res){
+  var params = {
+    location: String
+  }
+
+  TwitterController.get('/geo/search.json', params, function(err, data, response){
+    if(!err){
+      console.log(data.result.places);
+      return data.result.places;
+      
+    }
+    else{
+      console.log("Location error");
+      res.status(400).send(err);
+    }
+  });
 }
+
+
   
