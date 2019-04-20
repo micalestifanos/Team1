@@ -50,7 +50,7 @@
                     <h4 class="modal-title">Sign Up</h4>
 
                     <div class="input-group login">
-                      <form style="width: 70%; : center;">
+                      <form style="width: 70%; ">
                         <div class="form-group">
                           <label for="loginEmail">Email</label>
                           <input type="email" class="form-control" id="loginEmail" placeholder="Email">
@@ -92,7 +92,7 @@
                     <h4 class="modal-title">Login</h4>
 
                     <div class="input-group login">
-                      <form style="width: 70%; : center;">
+                      <form style="width: 70%;">
                         <div class="form-group">
                           <label for="signupEmail">Email</label>
                           <input type="email" class="form-control" id="signupEmail" placeholder="Email">
@@ -198,12 +198,10 @@
               <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
                   <form>
                       <div class="row">
-                        <div class="col">
+                        <div class=" col">
                             <label for="searchType">Search Type:</label>
-                            <select id="searchType" class="form-control" ng-model="searchWord.type">
-                                <option selected>Popular</option>
-                                <option>Recent</option>
-                                <option>Mixed</option>
+                            <select id=searchType class="form-control" ng-model="selectedType">
+                                <option ng-repeat="t in types" value="{{t.type}}">{{t.type}}</option>
                               </select>
                         </div>
                         <div class="col">
@@ -342,7 +340,7 @@
                 <div class="col-xs-12">
                   <div class="nested-content">
                      <p>Nested content 2</p> -->
-                    <div id="chart-area" class="row mb-6"ng-controller="TwitterController">
+                    <div id="chart-area" class="row mb-6">
                       <div id="time-chart" class="col-md-6"></div>
                       <div id="second-chart" class="col-md-6"></div>
                     </div>
@@ -351,7 +349,7 @@
                   </div>
                 </div>
             </div>
-          -->
+
 
           </div>
         </div>
