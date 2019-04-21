@@ -68,7 +68,7 @@ exports.searchTweet = function(req, res){
 exports.searchTweetByLocation = function(req, res){
   var params = {
     q: req.params.searchWord,
-    result_type: 'req.params.type',
+    result_type: req.params.type.toLowerCase(),
     count: '10',
     geocode: {longitude: req.params.longitude, latitude: req.params.latitude, radius: '50mi' }
   }
@@ -113,12 +113,14 @@ exports.searchTweetByLocation = function(req, res){
 
 exports.getLocation = function(req, res){
   var params = {
-    location: String
+    query: req.params.location
   }
+  console.log(params.location)
 
-  TwitterController.get('/geo/search.json', params, function(err, data, response){
+  TwitterController.get('geo/search.json', params, function(err, data, response){
     if(!err){
       console.log(data.result.places);
+      res.status(200).send(data.result.places)
       return data.result.places;
       
     }
