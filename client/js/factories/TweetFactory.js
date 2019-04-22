@@ -1,7 +1,7 @@
 angular.module('twitter', []).factory('Twitter', function($http) {
     var methods = {
-      getGlobalTrends: function() {
-        return $http.get('/api/twitter');
+      getGlobalTrends: function(woeid) {
+        return $http.get('/api/twitter/' + woeid, woeid);
       },
       search: function(word, type){
         return $http.get('/api/twitter/search/' + word + '/' + type, word, type);
@@ -11,6 +11,9 @@ angular.module('twitter', []).factory('Twitter', function($http) {
       },
       searchLocation: function(word){
         return $http.get('/api/twitter/location/' + word, word);
+      },
+      getTrendLocations: function(){
+        return $http.get('/api/twitter/trends/');
       }
     };
     return methods;

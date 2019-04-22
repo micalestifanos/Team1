@@ -14,7 +14,7 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
     
   };
     /* Initialize showing the Global Trend */
-    var initCharts = Twitter.getGlobalTrends().then(function(response) {
+    var initCharts = Twitter.getGlobalTrends(1).then(function(response) {
       response.data.shift();
       console.log(response.data);
       // firstChartElements = response.data;
@@ -30,6 +30,20 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
     }, function(error) {
       console.log('Unable to retrieve tweets:', error);
     });
+
+
+  // var initLocations = Twitter.getTrendLocations().then(function(response){
+  //   $scope.trendLocations = response.data;
+  //   console.log($scope.trendLocations);
+  // });
+
+  $scope.updateTrends = function(){
+    console.log($scope.trendLocation);
+    Twitter.getGlobalTrends($scope.trendLocation).then(function(response){
+      $scope.twitter = response.data;
+    });
+  };
+  // console.log($scope.trendLocations);
   // DOES NOT WORK WITH "#"
   $scope.searchTweet = function(){
     if($scope.searchWord.text == undefined){
@@ -37,6 +51,7 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
     }
     if($scope.searchWord.location == undefined){
       Twitter.search($scope.searchWord.text, $scope.selectedType).then(function(response){
+        response.data.shift();
         $scope.search = response.data; 
         console.log("Search for:" + $scope.searchWord.text + "Search Type: " +  $scope.selectedType);
         console.log($scope.searchWord.location);
@@ -55,6 +70,7 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
         latitude = response.data[0].centroid[0];
 
         Twitter.searchByLocation($scope.searchWord.text, longitude, latitude, $scope.selectedType).then(function(response){
+          response.data.shift();
           $scope.search = response.data;
           console.log("Search for:" + $scope.searchWord.text);
           console.log($scope.searchWord.location);

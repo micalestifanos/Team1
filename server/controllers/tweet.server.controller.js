@@ -5,7 +5,7 @@ var TwitterController = new Twitter(config.twitter_keys);
 exports.getGlobalTrends = function(req, res){
   
   var params = {
-      id: '1',
+      id: req.params.woeid,
       count: 10,
       result_type: 'recent',
       lang: 'en'
@@ -40,7 +40,7 @@ exports.searchTweet = function(req, res){
     count: '10'
   }
   console.log(req.params.searchWord);
-  var tweets = [{text: String, username: String, url: String, followers: Number, retweet: Number}];
+  var tweets = [{text: String, username: String, url: String, followers: Number, retweet: Number, image: String}];
   TwitterController.get('search/tweets.json', params, function(err, data, result){
     if(!err){
       // console.log(data.statuses[0].text);
@@ -48,8 +48,12 @@ exports.searchTweet = function(req, res){
       for(var i = 0; i < data.statuses.length; i++){
         tweet = {text: data.statuses[i].text, username: data.statuses[i].user.name,
          url: data.statuses[i].user.url, followers: data.statuses[i].user.followers_count,
+         image: data.statuses[i].user.profile_image_url_https,
         retweet: data.statuses[i].retweet_count};
         tweets.push(tweet);
+        if(tweet.image == null){
+          tweet.image = "logo2.png"
+        }
 
       }
       // console.log(data);
@@ -73,7 +77,7 @@ exports.searchTweetByLocation = function(req, res){
     geocode: {longitude: req.params.longitude, latitude: req.params.latitude, radius: '50mi' }
   }
 
-  var tweets = [{text: String, username: String, url: String, followers: Number, retweet: Number}];
+  var tweets = [{text: String, username: String, url: String, followers: Number, retweet: Number, image: String}];
   // var location;
 
   // TwitterController.get('/geo/search.json', req.params.location, function(err, data, result){
@@ -92,7 +96,11 @@ exports.searchTweetByLocation = function(req, res){
         for(var i = 0; i < data.statuses.length; i++){
           tweet = {text: data.statuses[i].text, username: data.statuses[i].user.name,
            url: data.statuses[i].user.url, followers: data.statuses[i].user.followers_count,
+           image: data.statuses[i].user.profile_image_url_https,
           retweet: data.statuses[i].retweet_count};
+          if(tweet.image == null){
+            tweet.image = "logo2.png"
+          }
           tweets.push(tweet);
   
         }
@@ -129,7 +137,23 @@ exports.getLocation = function(req, res){
       res.status(400).send(err);
     }
   });
-}
+};
+
+exports.trendLocations = function(req, res){
+  // TwitterController.get("trends/available.json", function(err, data, response){
+  //   if(!err){
+  //     console.log(data.result);
+  //     res.status(200).send(data.result);
+
+  //   }
+  //   else{
+  //     console.log("Trend Location Error!");
+  //     res.status(400).send(err);
+  //   }
+  // });
+  var woeid = require('./woeid.json');
+  res.status(200).json(woeid);
+};
 
 
   
