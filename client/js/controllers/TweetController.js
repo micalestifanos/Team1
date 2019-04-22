@@ -32,10 +32,10 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
     });
 
 
-  // var initLocations = Twitter.getTrendLocations().then(function(response){
-  //   $scope.trendLocations = response.data;
-  //   console.log($scope.trendLocations);
-  // });
+  var initLocations = Twitter.getTrendLocations().then(function(response){
+    $scope.trendLocations = response.data;
+    console.log($scope.trendLocations);
+  });
 
   $scope.updateTrends = function(){
     console.log($scope.trendLocation);

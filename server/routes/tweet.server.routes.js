@@ -7,7 +7,7 @@ var Twitter = require('../controllers/tweet.server.controller.js'),
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
-router.route('/:woeid').get(Twitter.getGlobalTrends);
+router.route('/trends/:woeid').get(Twitter.getGlobalTrends);
 router.route('/search/:searchWord/:type').get(Twitter.searchTweet);
 router.route('/search/:searchWord/:latitude/:longitude/:type').get(Twitter.searchTweetByLocation);
 router.route('/location/:location').get(Twitter.getLocation);

@@ -151,6 +151,7 @@ exports.trendLocations = function(req, res){
   //     res.status(400).send(err);
   //   }
   // });
+  console.log("reaching here");
   var woeid = require('./woeid.json');
   res.status(200).json(woeid);
 };
