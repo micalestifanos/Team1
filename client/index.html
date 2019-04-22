@@ -244,12 +244,12 @@
                 </ul>
                 
               </div>
-              <div id="chart-area" ng-controller="TwitterController">
+              <div id="chart-area" >
               <div class="card-body">
                 <div class="tab-content" id="myTabContent">
                   <div class="tab-pane active" id="table" role="tabpanel" aria-labelledby="table-tab">
                     <div id="table_div">
-                        <table class="table  table-hover ">
+                        <table class="table  table-hover" >
                             <thead class="thead-dark">
                               <tr>
                                 <th scope="col">#</th>
@@ -258,7 +258,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr ng-click="console.log('topic')" ng-repeat="tweet in twitter | orderBy: '-volume' ">
+                              <tr  ng-repeat="tweet in twitter | orderBy: '-volume' ">
                                 <!-- <th scope="row"></th> -->
                                   <th scope="row">{{$index + 1}}</th>
                                   <td>{{tweet.topic}}</td>

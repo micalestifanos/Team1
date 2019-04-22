@@ -10,21 +10,24 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
   $scope.sortReverse  = false;  // set the default sort order
   $scope.searchFish   = '';     // set the default search/filter term
 
+  $scope.twitter = [];
   $scope.clickTrend = function(topic){
     
   };
     /* Initialize showing the Global Trend */
     var initCharts = Twitter.getGlobalTrends(1).then(function(response) {
       response.data.shift();
-      console.log(response.data);
+      // console.log(response.data);
       // firstChartElements = response.data;
       // drawFirstChart(firstChartElements);
       // drawSecondChart(firstChartElements);
       // drawTable(firstChartElements);
 
 
-
-      $scope.twitter = response.data;
+      for(var i = 0; i < response.data.length; i++){
+        $scope.twitter.push(response.data[i]);
+      }
+      // $scope.twitter = response.data;
       // google.charts.setOnLoadCallback(updateCharts);
       // updateCharts(firstChartElements);
     }, function(error) {
@@ -39,8 +42,16 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
 
   $scope.updateTrends = function(){
     console.log($scope.trendLocation);
+    
+    // $scope.twitter.length = 0;
+    var j = $scope.twitter.length;
+    for(var i = 0; i < j; i++){
+      $scope.twitter.shift();
+    }
     Twitter.getGlobalTrends($scope.trendLocation).then(function(response){
-      $scope.twitter = response.data;
+      response.data.shift();
+      for(var i = 0; i < response.data.length; i++)
+      $scope.twitter.push(response.data.shift());
     });
   };
   // console.log($scope.trendLocations);
