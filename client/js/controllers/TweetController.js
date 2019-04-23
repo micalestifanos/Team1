@@ -1,5 +1,10 @@
-angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
-  function ($scope, Twitter) { // ADD $WINDOW --------------------
+angular.module('twitter').controller('TwitterController', ['$scope', '$window', 'Twitter',
+  function ($scope, $window, Twitter) {
+
+    if (localStorage.getItem('LoggedIn') !== 'true') {
+      $window.location.href = "../../login.html";
+    }
+
     $scope.types = [
       { type: "Popular", search: "popular" },
       { type: "Recent", search: "recent" },
@@ -15,7 +20,7 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
 
     };
     /* Initialize showing the Global Trend */
-    var initCharts = Twitter.getGlobalTrends(1).then(function (response) { // ADD GETLOCALSTORAGE ------
+    var initCharts = Twitter.getGlobalTrends(1, localStorage.getItem('Token')).then(function (response) {
       response.data.shift();
       // console.log(response.data);
       // firstChartElements = response.data;
@@ -32,6 +37,7 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
       // updateCharts(firstChartElements);
     }, function (error) {
       console.log('Unable to retrieve tweets:', error);
+      $window.location.href = "../../login.html";
     });
 
 
@@ -94,6 +100,12 @@ angular.module('twitter').controller('TwitterController', ['$scope', 'Twitter',
 
       }
     };
+
+    $scope.logOut = function () {
+      localStorage.setItem("LoggedIn", "false");
+      localStorage.setItem("Token", "null");
+      $window.location.href = "../../login.html";
+    }
 
 
 

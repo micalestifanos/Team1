@@ -26,6 +26,7 @@ angular.module('userAuth').controller('AuthController', ['$scope', '$window', 'U
                 console.log(res.data);
                 if (res.data.success == true) {
                     localStorage.setItem('Token', res.data.token);
+                    localStorage.setItem('LoggedIn', 'true');
                     $window.location.href = "../../index.html";
                 }
             });

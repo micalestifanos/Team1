@@ -1,6 +1,9 @@
 angular.module('twitter', []).factory('Twitter', function ($http) {
   var methods = {
-    getGlobalTrends: function (woeid) { // ADD AUTH -----------------------
+    getGlobalTrends: function (woeid, token) {
+      if (token) {
+        $http.defaults.headers.common.Authorization = token;
+      }
       return $http.get('/api/twitter/trends/' + woeid, woeid);
     },
     search: function (word, type) {
@@ -15,6 +18,6 @@ angular.module('twitter', []).factory('Twitter', function ($http) {
     getTrendLocations: function () {
       return $http.get('/api/twitter/trends/');
     }
-  }
-}
-);
+  };
+  return methods;
+});
