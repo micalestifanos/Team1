@@ -79,7 +79,7 @@ exports.searchTweetByLocation = function (req, res) {
     geocode: { longitude: req.params.longitude, latitude: req.params.latitude, radius: '50mi' }
   }
 
-  var tweets = [{ text: String, username: String, url: String, followers: Number, retweet: Number, image: String }];
+  var tweets = [{ text: String, username: String, url: String, followers: Number, retweet: Number, image: String, id: Number, favorites: Number }];
   // var location;
 
   // TwitterController.get('/geo/search.json', req.params.location, function(err, data, result){
@@ -97,10 +97,10 @@ exports.searchTweetByLocation = function (req, res) {
       var tweet;
       for (var i = 0; i < data.statuses.length; i++) {
         tweet = {
-          text: data.statuses[i].text, username: data.statuses[i].user.name,
+          text: data.statuses[i].text, username: data.statuses[i].user.name, screenname: data.statuses[i].user.screen_name,
           url: data.statuses[i].user.url, followers: data.statuses[i].user.followers_count,
           image: data.statuses[i].user.profile_image_url_https,
-          retweet: data.statuses[i].retweet_count
+          retweet: data.statuses[i].retweet_count, id: data.statuses[i].id_str, favorites: data.statuses[i].favorite_count
         };
         if (tweet.image == null) {
           tweet.image = "logo2.png"
@@ -160,4 +160,7 @@ exports.trendLocations = function (req, res) {
   res.status(200).json(woeid);
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> geraldina_zhang
