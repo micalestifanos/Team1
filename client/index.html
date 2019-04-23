@@ -202,9 +202,20 @@
                                   <div class="media">
                                     <img class="mr-3 tweeticon" src={{tweet.image}} alt="Generic placeholder image">
                                     <div class="media-body">
-                                      <h5 class="mt-0"> <b>{{tweet.username}}</b> </h5>
-                                      <p><small>Followers: {{tweet.followers}} | Retweets: {{tweet.retweet}} | URL: {{tweet.url}}</small></p>
+                                      
+                                        <h5 class="mt-0"> <b>{{tweet.username}} @{{tweet.screenname}}</b> </h5>
+                                      <p><small>Followers: {{tweet.followers}}</small></p>
                                       {{tweet.text}}
+                                      <td>
+                                        <div class="numberCircle retweets">{{tweet.retweet}}</div>
+                                      </td>
+                                      <td>
+                                        <div class="numberCircle favorites">{{tweet.favorites}}</div>
+                                      </td>
+                                      <td>
+                                        <a href="https://twitter.com/statuses/{{tweet.id}}" target="_blank">View this tweet!</a>
+                                      </td>
+                                      
                                     </div>
                                   </div>
                                 </td>
