@@ -72,6 +72,23 @@ html,body {
   font-family: 'Raleway', sans-serif;
 }
 
+.numberCircle {
+    width: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 20px;
+    /*border: 2px solid #666; */
+}
+
+.retweets {
+  background: rgb(62, 160, 82, 0.4)
+}
+
+.favorites {
+  background: rgb(214, 29, 29, 0.4)
+}
+
 /*
 .btn {
   background-color: #64b3db;
