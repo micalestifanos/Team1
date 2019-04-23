@@ -29,7 +29,7 @@ module.exports.init = function () {
   app.use('/', express.static('client'));
 
   /* Go to homepage for all routes not specified */
-  app.use(express.static('../../client/index.html'));
+  app.use(express.static('../../client/login.html'));
 
   /* Route to make request to the twitter API */
   app.use('/api/twitter', TwitterRouter);
