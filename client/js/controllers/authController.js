@@ -1,4 +1,4 @@
-angular.module('userAuth').controller('AuthController', ['$scope', '$window', 'Users',
+angular.module('userAuth').controller('authController', ['$scope', '$window', 'Users',
     function ($scope, $window, Users) {
         $scope.newUser = {};
         $scope.loginUser = {};
