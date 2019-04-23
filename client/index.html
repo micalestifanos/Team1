@@ -122,9 +122,9 @@
                   <form>
                       <div class="row">
                         <div class=" col">
-                            <label for="searchType">Search Type:</label>
-                            <select id=searchType class="form-control" ng-model="selectedType">
-                                <option ng-repeat="t in types" value="{{t.type}}">{{t.type}}</option>
+                            <label class="body-content" for="searchType">Search Type:</label>
+                            <select id=searchType class="form-control body-content" ng-model="selectedType">
+                                <option ng-repeat="t in types" value="{{t.type}}" class="body-content">{{t.type}}</option>
                               </select>
                         </div>
                         <div class="col">
@@ -192,6 +192,9 @@
                                 <thead>
                                   <tr>
                                     <th scope="col">Results</th>
+                                    <th scope="col">Retweets</th>
+                                    <th scope="col">Favorites</th>
+                                    <th scope="col">Link</th>
                                   </tr>
                                 </thead>
 
