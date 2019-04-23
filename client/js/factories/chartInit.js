@@ -3,8 +3,8 @@ google.charts.load('current', { 'packages': ['corechart', 'table'] });
 //google.charts.setOnLoadCallback(updateCharts);
 // google.charts.setOnLoadCallback();
 //  google.charts.setOnLoadCallback(drawTable);
-//  google.charts.setOnLoadCallback(drawSecondChart);
-//  google.charts.setOnLoadCallback(drawBarChart);
+google.charts.setOnLoadCallback(drawSecondChart);
+google.charts.setOnLoadCallback(drawBarChart);
 
 // function updateCharts(jsonData){
 //     // drawFirstChart(jsonData);
