@@ -35,6 +35,8 @@ angular.module('twitter').controller('TwitterController', ['$scope', '$window', 
       // $scope.twitter = response.data;
       // google.charts.setOnLoadCallback(updateCharts);
       // updateCharts(firstChartElements);
+      drawCharts($scope.twitter);
+
     }, function (error) {
       console.log('Unable to retrieve tweets:', error);
       $window.location.href = "../../login.html";

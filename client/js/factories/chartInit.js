@@ -1,91 +1,26 @@
 google.charts.load('current', { 'packages': ['corechart', 'table'] });
-// google.charts.load('current', {'packages':['table']});
-//google.charts.setOnLoadCallback(updateCharts);
-// google.charts.setOnLoadCallback();
-//  google.charts.setOnLoadCallback(drawTable);
-google.charts.setOnLoadCallback(drawSecondChart);
-google.charts.setOnLoadCallback(drawBarChart);
+google.charts.setOnLoadCallback(drawCharts);
 
-// function updateCharts(jsonData){
-//     // drawFirstChart(jsonData);
-//     // drawSecondChart(jsonData);
-//     drawTable(jsonData);
-//     //drawFirstChart(jsonData);
-//     drawBarChart(jsonData);
-//     drawSecondChart(jsonData);
-// }
-
-function drawFirstChart(jsonData) {
+function drawCharts(jsonData) {
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Trend');
     data.addColumn('number', 'Volume');
     if (jsonData != undefined) {
         for (i = 1; i < jsonData.length; i++) {
-
             data.addRows([
                 [jsonData[i].topic, jsonData[i].volume]
             ]);
         }
-
-
-    }
-    var options = {
-        title: 'Global Trends',
-        hAxis: { title: 'Top Trends', titleTextStyle: { color: '#333' } },
-        vAxis: { minValue: 0 }
-    };
-    chart = new google.visualization.Histogram(document.getElementById("time-chart"));
-    chart.draw(data, options);
-}
-
-function drawSecondChart(jsonData) {
-
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Trend');
-    data.addColumn('number', 'Volume');
-    if (jsonData != undefined) {
-        for (i = 1; i < jsonData.length; i++) {
-
-            data.addRows([
-                [jsonData[i].topic, jsonData[i].volume]
-            ]);
-        }
-
     }
 
-
-    var options = {
+    var pieOptions = {
         title: 'Topics',
         width: 600,
         height: 500,
         pieSliceText: "none" //removes percentages because don't appear well on front end
     };
 
-
-    var chart = new google.visualization.PieChart(document.getElementById('pie-chart'));
-    chart.draw(data, options);
-}
-
-function drawBarChart(jsonData) {
-
-    var data = google.visualization.arrayToDataTable([
-        [{ label: 'Topic', type: 'string' },
-        { label: 'Volume', type: 'number' }
-        ]
-    ]);
-    if (jsonData != undefined) {
-        for (i = 1; i < jsonData.length; i++) {
-            data.addRows([
-                [jsonData[i].topic, jsonData[i].volume]
-            ]);
-        }
-    }
-
-
-    var view = new google.visualization.DataView(data);
-
-
-    var options = {
+    var barOptions = {
         title: "Volume of Trending Twitter Topics",
         width: 800,
         height: 600,
@@ -94,25 +29,10 @@ function drawBarChart(jsonData) {
         hAxis: { title: 'Topic', textPosition: 'none' },
         vAxis: { title: 'Volume' }
     };
-    var chart = new google.visualization.ColumnChart(document.getElementById("bar-chart"));
-    chart.draw(view, options);
-}
 
+    var pieChart = new google.visualization.PieChart(document.getElementById('pie-chart'));
+    pieChart.draw(data, pieOptions);
 
-function drawTable(jsonData) {
-    var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Trend');
-    data.addColumn('number', 'Volume');
-    if (jsonData != undefined) {
-        for (i = 1; i < jsonData.length; i++) {
-
-            data.addRows([
-                [jsonData[i].topic, jsonData[i].volume]
-            ]);
-        }
-
-    }
-    var table = new google.visualization.Table(document.getElementById('table_div'));
-
-    table.draw(data, { showRowNumber: true, width: '100%', height: '100%' });
+    var barChart = new google.visualization.ColumnChart(document.getElementById("bar-chart"));
+    barChart.draw(data, barOptions);
 }

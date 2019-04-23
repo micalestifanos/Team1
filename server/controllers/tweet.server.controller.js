@@ -161,8 +161,3 @@ exports.trendLocations = function (req, res) {
 };
 
 
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 0a7fecbfa09259b6ab59b07851ccd178094a67da
