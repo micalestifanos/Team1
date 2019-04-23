@@ -40,53 +40,51 @@
               <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
               <a href="/login.html" class="list-group-item list-group-item-action bg-light">Log Out</a>
             </div>
+          </div>
 
+
+
+          <!-- About Modal -->
+          <div id="aboutModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+              <!-- About Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <h3 class="display-4">TweetData <small>An analytical data application for Twitter users</small></h3>
+
+                  <p>TweetData is a web application that allows users to see what topics are <b>trending</b> in specific
+                    areas.
+                    Search by keywords to find most recent or most popular tweets about them! A variety of graphical
+                    aides are provided to visualize the data.</p>
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+
+
         </div>
       </div>
-    </div>
-  </div>
-
-  <!-- About Modal content-->
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div>
-    <div class="modal-body">
-      <h3 class="display-4">TweetData <small>An analytical data application for Twitter users</small></h3>
-
-      <p>TweetData is a web application that allows users to see what topics are <b>trending</b> in specific areas.
-        Search by keywords to find most recent or most popular tweets about them! A variety of graphical aides are
-        provided to visualize the data.</p>
 
 
 
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
-  </div>
-  </div>
-
-
-
-  <!-- Dashboard Grid-->
-  <div class="col-sm-10 dashboard" id="col2">
-    <div class="demo-content bg-alt" style="height:100%">
+      <!-- Dashboard Grid-->
+      <div class="col-sm-10 dashboard" id="col2">
+        <div class="demo-content bg-alt" style="height:100%">
 
 
 
 
-      <!--Search bar-->
-      <!-- <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
+          <!--Search bar-->
+          <!-- <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
               <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary" type="button">Button</button>
               </div>
@@ -101,7 +99,7 @@
                   <input type="text" name="search" id="search" class="form-control" placeholder="Search" ng-model="searchWord.text"/>
               </div> -->
 
-      <!-- <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
+          <!-- <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
                 <input type="text" name="search" id="search" style="width: 50%" class="form-control" placeholder="Search tweet"  ng-model="searchWord.text">
                 <div class="input-group-append">
                   <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#searchList" ng-click="searchTweet()">Search</button>
@@ -115,7 +113,7 @@
                   </div>
                 </div>
               </div> -->
-      <!-- <div class="input-group-prepend">
+          <!-- <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
                     <div class="dropdown-menu">
                       <a class="dropdown-item" href="#">Action</a>
@@ -125,37 +123,38 @@
                       <a class="dropdown-item" href="#">Separated link</a>
                     </div>
                   </div>  -->
-      <!-- </div> -->
+          <!-- </div> -->
 
-      <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
-        <form>
-          <div class="row">
-            <div class=" col">
-              <label for="searchType">Search Type:</label>
-              <select id=searchType class="form-control" ng-model="selectedType">
-                <option ng-repeat="t in types" value="{{t.type}}">{{t.type}}</option>
-              </select>
-            </div>
-            <div class="col">
-              <label class="body-content" for="searchType">Search Location:</label>
-              <input type="text" class="form-control body-content" placeholder="Global" ng-model="searchWord.location">
-            </div>
+          <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
+            <form>
+              <div class="row">
+                <div class=" col">
+                  <label for="searchType">Search Type:</label>
+                  <select id=searchType class="form-control" ng-model="selectedType">
+                    <option ng-repeat="t in types" value="{{t.type}}">{{t.type}}</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label class="body-content" for="searchType">Search Location:</label>
+                  <input type="text" class="form-control body-content" placeholder="Global"
+                    ng-model="searchWord.location">
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
-        <input type="text" name="search" id="search" class="form-control" placeholder="Search tweet"
-          ng-model="searchWord.text" required>
-        <span for="search" class="btn input-group-addon" data-toggle="modal" data-target="#searchList"
-          ng-click="searchTweet()">
-          <i class="glyphicon glyphicon-search"></i>
-        </span>
-      </div>
+          <div class="input-group searchbar shadow-sm p-3 mb-5 bg-white rounded">
+            <input type="text" name="search" id="search" class="form-control" placeholder="Search tweet"
+              ng-model="searchWord.text" required>
+            <span for="search" class="btn input-group-addon" data-toggle="modal" data-target="#searchList"
+              ng-click="searchTweet()">
+              <i class="glyphicon glyphicon-search"></i>
+            </span>
+          </div>
 
 
 
 
-      <!-- <div class="modal fade" id="searchList" tabindex="-1" role="dialog" aria-labelledby="searchListLabel" aria-hidden="true">
+          <!-- <div class="modal fade" id="searchList" tabindex="-1" role="dialog" aria-labelledby="searchListLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -186,176 +185,155 @@
                   </div>
                 </div> -->
 
-      <div class="modal fade" id="searchList" tabindex="-1" role="dialog" aria-labelledby="searchListLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="searchListLabel">Search for: "{{searchWord.text}}"</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body clearfix">
+          <div class="modal fade" id="searchList" tabindex="-1" role="dialog" aria-labelledby="searchListLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="searchListLabel">Search for: "{{searchWord.text}}"</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body clearfix">
 
 
-              <div class="tableWrapper">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">Results</th>
-                    </tr>
-                  </thead>
+                  <div class="tableWrapper">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Results</th>
+                        </tr>
+                      </thead>
 
-                  <tbody>
+                      <tbody>
 
-                    <tr ng-repeat="tweet in search | filter: query">
-                      <td>
-                        <div class="media">
-                          <img class="mr-3 tweeticon" src={{tweet.image}} alt="Generic placeholder image">
-                          <div class="media-body">
-                            <h5 class="mt-0"> <b>{{tweet.username}}</b> </h5>
-                            <p><small>Followers: {{tweet.followers}} | Retweets: {{tweet.retweet}} | URL:
-                                {{tweet.url}}</small></p>
-                            {{tweet.text}}
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                        <tr ng-repeat="tweet in search | filter: query">
+                          <td>
+                            <div class="media">
+                              <img class="mr-3 tweeticon" src={{tweet.image}} alt="Generic placeholder image">
+                              <div class="media-body">
+                                <h5 class="mt-0"> <b>{{tweet.username}}</b> </h5>
+                                <p><small>Followers: {{tweet.followers}} | Retweets: {{tweet.retweet}} | URL:
+                                    {{tweet.url}}</small></p>
+                                {{tweet.text}}
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
 
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-      <!-- Test card -->
-      <div class="card shadow p-3 mb-5 bg-white">
-        <div class="card-header">
-          <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table"
-                aria-selected="true">Table</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph"
-                aria-selected="false">Bar Chart</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="pie-tab" data-toggle="tab" href="#pie" role="tab" aria-controls="pie"
-                aria-selected="false">Pie Chart</a>
-            </li>
-            <li>
-              <select id=trendLocation class="form-control" ng-model="trendLocation" ng-change="updateTrends()">
-                <option ng-repeat="loc in trendLocations" value="{{loc.woeid}}">{{loc.name}}</option>
-              </select>
-            </li>
-          </ul>
-
-        </div>
-        <div id="chart-area">
-          <div class="card-body">
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane active" id="table" role="tabpanel" aria-labelledby="table-tab">
-                <div id="table_div">
-                  <table class="table  table-hover">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Topic</th>
-                        <th scope="col"> Volume</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr ng-repeat="tweet in twitter | orderBy: '-volume' ">
-                        <!-- <th scope="row"></th> -->
-                        <th scope="row">{{$index + 1}}</th>
-                        <td>{{tweet.topic}}</td>
-                        <td>{{tweet.volume}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
 
               </div>
-              <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
-                <div id="bar-chart"></div>
-              </div>
-              <div class="tab-pane fade" id="pie" role="tabpanel" aria-labelledby="pie-tab">
-                <div id="pie-chart"></div>
+            </div>
+          </div>
+
+
+
+
+
+          <!-- Test card -->
+          <div class="card shadow p-3 mb-5 bg-white">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="table-tab" data-toggle="tab" href="#table" role="tab"
+                    aria-controls="table" aria-selected="true">Table</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph"
+                    aria-selected="false">Bar Chart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pie-tab" data-toggle="tab" href="#pie" role="tab" aria-controls="pie"
+                    aria-selected="false">Pie Chart</a>
+                </li>
+                <li>
+                  <select id=trendLocation class="form-control" ng-model="trendLocation" ng-change="updateTrends()">
+                    <option ng-repeat="loc in trendLocations" value="{{loc.woeid}}">{{loc.name}}</option>
+                  </select>
+                </li>
+              </ul>
+
+            </div>
+            <div id="chart-area">
+              <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane active" id="table" role="tabpanel" aria-labelledby="table-tab">
+                    <div id="table_div">
+                      <table class="table  table-hover">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Topic</th>
+                            <th scope="col"> Volume</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="tweet in twitter | orderBy: '-volume' ">
+                            <!-- <th scope="row"></th> -->
+                            <th scope="row">{{$index + 1}}</th>
+                            <td>{{tweet.topic}}</td>
+                            <td>{{tweet.volume}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                  </div>
+                  <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+                    <div id="bar-chart"></div>
+                  </div>
+                  <div class="tab-pane fade" id="pie" role="tabpanel" aria-labelledby="pie-tab">
+                    <div id="pie-chart"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
 
 
 
 
-      <!--
+          <!--
             <div class="row">
                 <div class="col-xs-12">
                   <div class="nested-content">
                     <div id="table_div"></div>
                   </div>
-
-              <div class="col text-center">
-                <button type="button" class="btn btn-outline-primary .btn-lg" style="margin-bottom: 10px;">Show
-                  graphs</button>
-              </div>
-
+                  <div class="col text-center">
+                    <button type="button" class="btn btn-outline-primary .btn-lg" style="margin-bottom: 10px;">Show graphs</button>
+                  </div>
+                </div>
             </div>
-          </div>
-
             <div class="row">
                 <div class="col-xs-12">
                   <div class="nested-content">
                      <p>Nested content 2</p> -->
-      <!-- <div id="chart-area" class="row mb-6"> -->
+          <!-- <div id="chart-area" class="row mb-6"> -->
 
-      <!-- <div id="time-chart" class="col-md-6"></div>
+          <!-- <div id="time-chart" class="col-md-6"></div>
                       <div id="second-chart" class="col-md-6"></div> -->
-      <!-- <p>Nested content 2</p>
+          <!-- <p>Nested content 2</p>
                     <div id="chart-area" class="row mb-6"ng-controller="TwitterController">
                       <div id="time-chart" class="col-md-6"></div>
                       <div id="second-chart" class="col-md-6"></div>
                     </div> -->
 
 
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
 
 
   </div>
   </div>
   </div>
   </div>
-  </div>
-  </div>
-  -->
-
-  </div>
-  </div>
-  </div>
-
-  </div>
-  </div>
-  </div>
-  </div>
-
-
-
-
-
 
   <!-- CDN Dependencies for jQuery, Bootstrap and AngularJS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
