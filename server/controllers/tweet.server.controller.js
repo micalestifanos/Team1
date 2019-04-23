@@ -160,7 +160,3 @@ exports.trendLocations = function (req, res) {
   res.status(200).json(woeid);
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> geraldina_zhang

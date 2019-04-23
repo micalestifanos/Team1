@@ -1,5 +1,4 @@
-google.charts.load('current', { 'packages': ['corechart', 'table'] });
-google.charts.setOnLoadCallback(drawCharts);
+google.charts.load('current', { 'packages': ['corechart', 'table', 'bar'], 'callback': drawCharts });
 
 function drawCharts(jsonData) {
     var data = new google.visualization.DataTable();

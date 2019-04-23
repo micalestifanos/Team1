@@ -22,20 +22,12 @@ angular.module('twitter').controller('TwitterController', ['$scope', '$window', 
     /* Initialize showing the Global Trend */
     var initCharts = Twitter.getGlobalTrends(1, localStorage.getItem('Token')).then(function (response) {
       response.data.shift();
-      // console.log(response.data);
-      // firstChartElements = response.data;
-      // drawFirstChart(firstChartElements);
-      // drawSecondChart(firstChartElements);
-      // drawTable(firstChartElements);
-
 
       for (var i = 0; i < response.data.length; i++) {
         $scope.twitter.push(response.data[i]);
       }
-      // $scope.twitter = response.data;
-      // google.charts.setOnLoadCallback(updateCharts);
-      // updateCharts(firstChartElements);
-      drawCharts($scope.twitter);
+
+      drawCharts(response.data);
 
     }, function (error) {
       console.log('Unable to retrieve tweets:', error);
