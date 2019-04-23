@@ -40,16 +40,16 @@ exports.searchTweet = function(req, res){
     count: '10'
   }
   console.log(req.params.searchWord);
-  var tweets = [{text: String, username: String, url: String, followers: Number, retweet: Number, image: String}];
+  var tweets = [{text: String, username: String, url: String, followers: Number, retweet: Number, image: String, id: Number, favorites: Number}];
   TwitterController.get('search/tweets.json', params, function(err, data, result){
     if(!err){
       // console.log(data.statuses[0].text);
       var tweet;
       for(var i = 0; i < data.statuses.length; i++){
-        tweet = {text: data.statuses[i].text, username: data.statuses[i].user.name,
+        tweet = {text: data.statuses[i].text, username: data.statuses[i].user.name, screenname: data.statuses[i].user.screen_name,
          url: data.statuses[i].user.url, followers: data.statuses[i].user.followers_count,
          image: data.statuses[i].user.profile_image_url_https,
-        retweet: data.statuses[i].retweet_count};
+        retweet: data.statuses[i].retweet_count, id: data.statuses[i].id_str, favorites: data.statuses[i].favorite_count};
         tweets.push(tweet);
         if(tweet.image == null){
           tweet.image = "logo2.png"
